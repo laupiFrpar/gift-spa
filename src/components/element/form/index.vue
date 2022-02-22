@@ -30,6 +30,7 @@ export default {
       default: '',
     },
   },
+  emits: ['submitted'],
   methods: {
     handleSubmit() {
       this.$emit('submitted');

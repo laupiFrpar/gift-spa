@@ -2,8 +2,11 @@
 import './assets/styles/app.scss';
 
 import { createApp } from 'vue';
+import router from './router';
+import store from './store';
 import App from './App.vue';
-import HeaderLayout from './components/layout/TheHeader.vue';
 
-createApp(App).mount('#app');
-createApp(HeaderLayout).mount('#header');
+createApp(App)
+  .use(router)
+  .use(store)
+  .mount('#app');

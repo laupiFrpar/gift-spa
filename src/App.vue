@@ -1,24 +1,19 @@
+<script setup>
+// This starter template is using Vue 3 <script setup> SFCs
+// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+import HelloWorld from '@/components/HelloWorld.vue';
+import TheHeader from '@/components/layout/TheHeader.vue';
+</script>
+
 <template>
   <the-header />
+  <router-view />
   <img
     alt="Vue logo"
     src="./assets/images/logo.png"
   >
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue';
-import TheHeader from './components/layout/TheHeader.vue';
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-    TheHeader,
-  },
-};
-</script>
 
 <style>
 #app {

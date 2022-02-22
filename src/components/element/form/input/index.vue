@@ -73,6 +73,7 @@ export default {
       default: null,
     },
   },
+  emits: ['updated-value'],
   data() {
     return {
       modelValue: '',

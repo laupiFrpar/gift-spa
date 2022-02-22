@@ -1,24 +1,23 @@
-# gift-spa
+# Gift SPA
 
 ## Project setup
+
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
-yarn serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
+
 ```
-yarn build
+npm run build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+## Todo
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
