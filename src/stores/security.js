@@ -1,85 +1,45 @@
-import authService from '@/services/security/auth';
+// import authService from '@/services/security/auth';
 import { defineStore } from 'pinia';
 
 const user = JSON.parse(localStorage.getItem('user'));
 const initialState = user
-  ? { status: { loggedIn: true }, user }
-  : { status: { loggedIn: false }, user: null };
+  ? { isLogged: true, user }
+  : { isLogged: false, user: null };
 
 const securityStore = defineStore('security', {
   state: () => initialState,
-  getters: {
-
-  },
   actions: {
-    login(data) {
-      return authService.login(data)
-        .then(
-          (userData) => {
-            this.loginSuccess(userData);
+    // login(data) {
+    //   return authService.login(data)
+    //     .then(
+    //       (userData) => {
+    //         this.loginSuccess(userData);
 
-            return Promise.resolve(userData);
-          },
-          (error) => {
-            this.loginFailure();
+    //         return Promise.resolve(userData);
+    //       },
+    //       (error) => {
+    //         this.loginFailure();
 
-            return Promise.reject(error.response.data.message);
-          },
-        );
-    },
+    //         return Promise.reject(error.response.data.message);
+    //       },
+    //     );
+    // },
     loginSuccess(userData) {
-      this.status.loggedIn = true;
+      this.isLogged = true;
       this.user = userData;
     },
     loginFailure() {
-      this.status.loggedIn = false;
+      this.isLogged = false;
+      this.user = null;
+    },
+    logout() {
+      this.isLogged = false;
       this.user = null;
     },
   },
 });
 
 export default securityStore;
-
-// const auth = {
-//   namespaced: true,
-//   state: initialState,
-//   actions: {
-//     login({ commit }, data) {
-//       return authService.login(data)
-//         .then(
-//           (userData) => {
-//             commit('loginSuccess', userData);
-
-//             return Promise.resolve(userData);
-//           },
-//           (error) => {
-//             commit('loginFailure');
-
-//             return Promise.reject(error.response.data.message);
-//           },
-//         );
-//     },
-//   },
-//   mutations: {
-//     loginSuccess(state, userData) {
-//       state.status.loggedIn = true;
-//       state.user = userData;
-//     },
-//     loginFailure(state) {
-//       state.status.loggedIn = false;
-//       state.user = null;
-//     },
-//   },
-// };
-
-// export default auth;
-
-// import AuthService from '../services/auth.service';
-
-// const user = JSON.parse(localStorage.getItem('user'));
-// const initialState = user
-//   ? { status: { loggedIn: true }, user }
-//   : { status: { loggedIn: false }, user: null };
 
 // export const auth = {
 //   namespaced: true,

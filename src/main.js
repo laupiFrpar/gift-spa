@@ -2,11 +2,14 @@
 import './assets/styles/app.scss';
 
 import { createApp } from 'vue';
-import { createPinia } from 'pinia';
+import pinia from './stores';
 import router from './router';
 import App from './App.vue';
 
+// require('bootstrap/js/dist/dropdown');
+import 'bootstrap/js/dist/dropdown';
+
 createApp(App)
+  .use(pinia)
   .use(router)
-  .use(createPinia())
   .mount('#app');

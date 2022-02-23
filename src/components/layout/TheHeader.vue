@@ -25,7 +25,7 @@
         </ul> -->
         <ul class="navbar-nav ml-auto">
           <li
-            v-if="user"
+            v-if="store.isLogged"
             class="nav-item dropdown"
           >
             <a
@@ -36,7 +36,7 @@
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >{{ user.email }}</a>
+            >{{ store.user.email }}</a>
             <ul
               class="dropdown-menu"
               aria-labelledby="navbar-user-dropdown"
@@ -49,10 +49,13 @@
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <a
-                  href="/api/logout"
+                <router-link
+                  to="login"
                   class="dropdown-item"
-                >Log out</a>
+                  @click="logout"
+                >
+                  Log out
+                </router-link>
               </li>
             </ul>
           </li>
@@ -74,21 +77,19 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import securityStore from '@/stores/security';
+import securityService from '@/services/security';
 
-let user = null;
+const store = securityStore();
 
-onMounted(() => {
-  if (window.user) {
-    user = window.user;
-  }
-});
+// const activeClass = (pageName) => {
+//   if (pageName === window.currentPageName) {
+//     return 'active';
+//   }
 
-const activeClass = (pageName) => {
-  if (pageName === window.currentPageName) {
-    return 'active';
-  }
-
-  return '';
+//   return '';
+// };
+const logout = () => {
+  securityService.logout();
 };
 </script>

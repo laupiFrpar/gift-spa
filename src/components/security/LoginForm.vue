@@ -28,7 +28,8 @@
 
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue';
-import securityStore from '@/stores/security';
+// import securityStore from '@/stores/security';
+import securityService from '@/services/security';
 
 import FormComponent from '@/components/element/form/FormComponent.vue';
 import EmailInput from '@/components/element/form/input/Email.vue';
@@ -57,23 +58,36 @@ const onUpdatedPassword = (event) => {
   password = event.value;
 };
 
-const security = securityStore();
+// const security = securityStore();
 
 const handleSubmit = () => {
   if (email && password) {
     isLoading.value = true;
     error.value = null;
 
-    security.login({ username: email, password })
+    // const value = securityService.login({ username: email, password });
+    securityService.login({ username: email, password })
       .then(
         () => {
-          emit('user-authenticated');
+          emit('user-authenticated')
         },
         (errorMessage) => {
-          isLoading.value = false;
           error.value = errorMessage;
-        },
-      );
+        }
+      )
+      .finally(() => {
+        isLoading.value = false;
+      });
+    // security.login({ username: email, password })
+    //   .then(
+    //     () => {
+    //       emit('user-authenticated');
+    //     },
+    //     (errorMessage) => {
+    //       isLoading.value = false;
+    //       error.value = errorMessage;
+    //     },
+    //   );
   } else {
     error.value = 'You must set username and password';
   }
