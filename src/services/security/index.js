@@ -8,7 +8,7 @@ const securityService = {
 
     return api.post('/api/login_check', { username, password })
       .then(
-        (response) => {
+        async (response) => {
           if (response.data.token) {
             tokenService.set(response.data.token);
           }
@@ -25,7 +25,6 @@ const securityService = {
         },
         (error) => {
           store.loginFailure();
-          console.log(error);
 
           return error.response.data.message;
         },

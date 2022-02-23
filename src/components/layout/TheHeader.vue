@@ -59,8 +59,8 @@
               </li>
             </ul>
           </li>
-          <li
-            v-else
+          <!-- <li
+            v-if="router.currentRoute.name !== login"
             class="nav-item active"
           >
             <router-link
@@ -69,7 +69,7 @@
             >
               Login
             </router-link>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -79,8 +79,10 @@
 <script setup>
 import securityStore from '@/stores/security';
 import securityService from '@/services/security';
+import { useRouter } from 'vue-router';
 
 const store = securityStore();
+const router = useRouter();
 
 // const activeClass = (pageName) => {
 //   if (pageName === window.currentPageName) {
@@ -89,6 +91,7 @@ const store = securityStore();
 
 //   return '';
 // };
+
 const logout = () => {
   securityService.logout();
 };
