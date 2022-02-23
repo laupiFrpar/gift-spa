@@ -21,39 +21,26 @@
   </tr>
 </template>
 
-<script>
-import ButtonComponent from '../button/index.vue';
+<script setup>
+import {
+  defineProps, defineEmits,
+} from 'vue';
+import ButtonComponent from '@/components/element/button/index.vue';
 
-export default {
-  name: 'TableRow',
-  components: {
-    ButtonComponent,
+defineProps({
+  fields: {
+    type: Array,
+    required: true,
   },
-  props: {
-    fields: {
-      type: Array,
-      required: true,
-    },
-    fieldKey: {
-      type: String,
-      default: '@id',
-    },
-    item: {
-      type: Object,
-      required: true,
-    },
+  fieldKey: {
+    type: String,
+    default: '@id',
   },
-  emits: [
-    'edit-item',
-    'remove-item',
-  ],
-  // methods: {
-  //   edit() {
-  //     this.$emit('edit-item', this.item[this.fieldKey]);
-  //   },
-  //   remove() {
-  //     this.$emit('remove-item', this.item[this.fieldKey]);
-  //   },
-  // },
-};
+  item: {
+    type: Object,
+    required: true,
+  },
+});
+
+defineEmits(['edit-item', 'remove-item']);
 </script>

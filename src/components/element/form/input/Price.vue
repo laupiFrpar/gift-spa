@@ -8,13 +8,6 @@
   />
 </template>
 
-<script>
-import InputComponent from './index.vue';
-
-export default {
-  name: 'EmailInput',
-  components: {
-    InputComponent,
-  },
-};
+<script setup>
+import InputComponent from './InputComponent.vue';
 </script>

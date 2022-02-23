@@ -6,13 +6,6 @@
   />
 </template>
 
-<script>
-import InputComponent from './index.vue';
-
-export default {
-  name: 'PasswordInput',
-  components: {
-    InputComponent,
-  },
-};
+<script setup>
+import InputComponent from './InputComponent.vue';
 </script>

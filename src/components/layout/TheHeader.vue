@@ -73,27 +73,22 @@
   </header>
 </template>
 
-<script>
-export default {
-  name: 'HeaderLayout',
-  data() {
-    return {
-      user: null,
-    };
-  },
-  mounted() {
-    if (window.user) {
-      this.user = window.user;
-    }
-  },
-  methods: {
-    activeClass(pageName) {
-      if (pageName === window.currentPageName) {
-        return 'active';
-      }
+<script setup>
+import { onMounted } from 'vue';
 
-      return '';
-    },
-  },
+let user = null;
+
+onMounted(() => {
+  if (window.user) {
+    user = window.user;
+  }
+});
+
+const activeClass = (pageName) => {
+  if (pageName === window.currentPageName) {
+    return 'active';
+  }
+
+  return '';
 };
 </script>

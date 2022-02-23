@@ -29,47 +29,32 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import {
+  defineProps, defineEmits,
+} from 'vue';
 // import Loading from '@/components/loading';
 import TableRow from './TableRow.vue';
 import TableHeader from './TableHeader.vue';
 
-export default {
-  name: 'TableComponent',
-  components: {
-    // Loading,
-    TableHeader,
-    TableRow,
+defineProps({
+  emptyMessage: {
+    type: String,
+    default: 'No items',
   },
-  props: {
-    emptyMessage: {
-      type: String,
-      default: 'No items',
-    },
-    fields: {
-      type: Array,
-      required: true,
-    },
-    items: {
-      type: Array,
-      required: true,
-    },
-    loading: {
-      type: Boolean,
-      required: true,
-    },
+  fields: {
+    type: Array,
+    required: true,
   },
-  emits: [
-    'edit-item',
-    'remove-item',
-  ],
-  // methods: {
-  //   editItem(id) {
-  //     this.$emit('edit-item', id);
-  //   },
-  //   removeItem(id) {
-  //     this.$emit('remove-item', id);
-  //   },
-  // },
-};
+  items: {
+    type: Array,
+    required: true,
+  },
+  loading: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+defineEmits(['edit-item', 'remove-item']);
 </script>

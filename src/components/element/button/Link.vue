@@ -7,19 +7,14 @@
   </button-component>
 </template>
 
-<script>
-import ButtonComponent from './index.vue';
+<script setup>
+import { defineProps } from 'vue';
+import ButtonComponent from './ButtonComponent.vue';
 
-export default {
-  name: 'LinkButton',
-  components: {
-    ButtonComponent,
+defineProps({
+  href: {
+    type: String,
+    required: true,
   },
-  props: {
-    href: {
-      type: String,
-      required: true,
-    },
-  },
-};
+});
 </script>

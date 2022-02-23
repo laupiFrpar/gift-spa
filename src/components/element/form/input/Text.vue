@@ -2,13 +2,6 @@
   <input-component />
 </template>
 
-<script>
-import InputComponent from './index.vue';
-
-export default {
-  name: 'TextInput',
-  components: {
-    InputComponent,
-  },
-};
+<script setup>
+import InputComponent from './InputComponent.vue';
 </script>

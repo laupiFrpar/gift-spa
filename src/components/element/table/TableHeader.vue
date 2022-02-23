@@ -10,14 +10,13 @@
   </tr>
 </template>
 
-<script>
-export default {
-  name: 'TableHeader',
-  props: {
-    fields: {
-      type: Array,
-      required: true,
-    },
+<script setup>
+import { defineProps } from 'vue';
+
+defineProps({
+  fields: {
+    type: Array,
+    required: true,
   },
-};
+});
 </script>

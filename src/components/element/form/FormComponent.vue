@@ -17,24 +17,23 @@
   </form>
 </template>
 
-<script>
-export default {
-  name: 'FormComponent',
-  props: {
-    error: {
-      type: String,
-      default: '',
-    },
-    title: {
-      type: String,
-      default: '',
-    },
+<script setup>
+import { defineProps, defineEmits } from 'vue';
+
+defineProps({
+  error: {
+    type: String,
+    default: null,
   },
-  emits: ['submitted'],
-  methods: {
-    handleSubmit() {
-      this.$emit('submitted');
-    },
+  title: {
+    type: String,
+    default: null,
   },
+});
+
+const emit = defineEmits(['submitted']);
+
+const handleSubmit = () => {
+  emit('submitted');
 };
 </script>

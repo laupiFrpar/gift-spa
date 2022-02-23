@@ -8,18 +8,13 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { useRouter } from 'vue-router';
 import LoginForm from '@/components/security/LoginForm.vue';
 
-export default {
-  name: 'LoginPage',
-  components: {
-    LoginForm,
-  },
-  methods: {
-    onUserAuthenticated() {
-      this.$router.push('/');
-    },
-  },
+const router = useRouter();
+
+const onUserAuthenticated = () => {
+  router.push('/');
 };
 </script>

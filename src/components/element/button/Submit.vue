@@ -19,23 +19,18 @@
   </button-component>
 </template>
 
-<script>
-import ButtonComponent from './index.vue';
+<script setup>
+import { defineProps } from 'vue';
+import ButtonComponent from './ButtonComponent.vue';
 
-export default {
-  name: 'SubmitButton',
-  components: {
-    ButtonComponent,
+defineProps({
+  isLoading: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    isLoading: {
-      type: Boolean,
-      default: false,
-    },
-    labelLoading: {
-      type: String,
-      default: 'Loading...',
-    },
+  labelLoading: {
+    type: String,
+    default: 'Loading...',
   },
-};
+});
 </script>

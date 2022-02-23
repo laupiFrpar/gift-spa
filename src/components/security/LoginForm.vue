@@ -26,56 +26,55 @@
   </form-component>
 </template>
 
-<script>
-import FormComponent from '@/components/element/form/index.vue';
+<script setup>
+import { defineProps, defineEmits, ref } from 'vue';
+import { useStore } from 'vuex';
+import FormComponent from '@/components/element/form/FormComponent.vue';
 import EmailInput from '@/components/element/form/input/Email.vue';
 import PasswordInput from '@/components/element/form/input/Password.vue';
 import SubmitButton from '@/components/element/button/Submit.vue';
 
-export default {
-  name: 'LoginForm',
-  components: {
-    FormComponent,
-    EmailInput,
-    PasswordInput,
-    SubmitButton,
+const store = useStore();
+
+defineProps({
+  user: {
+    type: String,
+    default: null,
   },
-  props: {
-    user: {
-      type: String,
-      default: null,
-    },
-  },
-  emits: ['user-authenticated'],
-  data() {
-    return {
-      email: '',
-      password: '',
-      error: '',
-      isLoading: false,
-    };
-  },
-  methods: {
-    handleSubmit() {
-      this.isLoading = true;
-      this.error = '';
-      this.$store.dispatch('auth/login', { username: this.email, password: this.password })
-        .then(
-          () => {
-            this.$emit('user-authenticated');
-          },
-          (errorMessage) => {
-            this.isLoading = false;
-            this.error = errorMessage;
-          },
-        );
-    },
-    onUpdatedEmail(event) {
-      this.email = event.value;
-    },
-    onUpdatedPassword(event) {
-      this.password = event.value;
-    },
-  },
+});
+
+const emit = defineEmits(['user-authenticated']);
+
+let email = '';
+let password = '';
+const error = ref(null);
+const isLoading = ref(false);
+
+const onUpdatedEmail = (event) => {
+  email = event.value;
+};
+
+const onUpdatedPassword = (event) => {
+  password = event.value;
+};
+
+const handleSubmit = () => {
+  if (email && password) {
+    isLoading.value = true;
+    error.value = null;
+
+    store.dispatch('auth/login', { username: email, password })
+      .then(
+        () => {
+          emit('user-authenticated');
+        },
+        (errorMessage) => {
+          isLoading.value = false;
+          error.value = errorMessage;
+        },
+      );
+  } else {
+    error.value = 'You must set username and password';
+  }
 };
 </script>
