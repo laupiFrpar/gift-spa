@@ -28,13 +28,12 @@
 
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue';
-import { useStore } from 'vuex';
+import securityStore from '@/stores/security';
+
 import FormComponent from '@/components/element/form/FormComponent.vue';
 import EmailInput from '@/components/element/form/input/Email.vue';
 import PasswordInput from '@/components/element/form/input/Password.vue';
 import SubmitButton from '@/components/element/button/Submit.vue';
-
-const store = useStore();
 
 defineProps({
   user: {
@@ -58,12 +57,14 @@ const onUpdatedPassword = (event) => {
   password = event.value;
 };
 
+const security = securityStore();
+
 const handleSubmit = () => {
   if (email && password) {
     isLoading.value = true;
     error.value = null;
 
-    store.dispatch('auth/login', { username: email, password })
+    security.login({ username: email, password })
       .then(
         () => {
           emit('user-authenticated');

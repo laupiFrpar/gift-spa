@@ -11,10 +11,10 @@
     "@vitejs/plugin-vue": "^2.2.2",
     "axios": "^0.26.0",
     "core-js": "^3.21.0",
+    "pinia": "^2.0.11",
     "vite": "^2.8.4",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12",
-    "vuex": "^4.0.2"
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.17.0",
