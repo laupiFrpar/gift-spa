@@ -60,9 +60,12 @@
             v-else
             class="nav-item active"
           >
-            <link-button href="/login">
+            <router-link
+              to="login"
+              class="btn btn-primary"
+            >
               Login
-            </link-button>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -71,13 +74,8 @@
 </template>
 
 <script>
-import LinkButton from '../element/button/Link.vue';
-
 export default {
   name: 'HeaderLayout',
-  components: {
-    LinkButton,
-  },
   data() {
     return {
       user: null,
