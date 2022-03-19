@@ -37,6 +37,11 @@ const securityService = {
     localStorage.removeItem('user');
     store.logout();
   },
+  getUser: () => {
+    const store = securityStore();
+
+    return store.getUser();
+  }
 };
 
 export default securityService;

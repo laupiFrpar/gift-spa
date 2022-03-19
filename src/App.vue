@@ -5,10 +5,6 @@ import TheHeader from '@/components/layout/TheHeader.vue';
 <template>
   <the-header />
   <router-view />
-  <img
-    alt="Vue logo"
-    src="./assets/images/logo.png"
-  >
 </template>
 
 <style>

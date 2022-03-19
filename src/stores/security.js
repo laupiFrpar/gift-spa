@@ -36,6 +36,9 @@ const securityStore = defineStore('security', {
       this.isLogged = false;
       this.user = null;
     },
+    getUser() {
+      return this.user;
+    },
   },
 });
 

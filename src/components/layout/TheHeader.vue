@@ -42,15 +42,15 @@
               aria-labelledby="navbar-user-dropdown"
             >
               <li>
-                <a
-                  href="/my-profile"
+                <router-link
+                  :to="{name: 'settingsProfile' }"
                   class="dropdown-item"
-                >My profile</a>
+                >My profile</router-link>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <router-link
-                  to="login"
+                  :to="{name: 'login' }"
                   class="dropdown-item"
                   @click="logout"
                 >
