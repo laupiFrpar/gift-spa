@@ -25,7 +25,7 @@
 import {
   defineProps, defineEmits,
 } from 'vue';
-import ButtonComponent from '@/components/element/button/index.vue';
+import ButtonComponent from '@/components/element/button/ButtonComponent.vue';
 
 defineProps({
   fields: {

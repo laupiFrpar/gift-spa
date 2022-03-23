@@ -45,17 +45,24 @@
                 <router-link
                   :to="{name: 'settingsProfile' }"
                   class="dropdown-item"
-                >My profile</router-link>
+                >
+                  My profile
+                </router-link>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
-                <router-link
+                <a
+                  href="#"
+                  class="dropdown-item"
+                  @click="logout"
+                >Log out</a>
+                <!-- <router-link
                   :to="{name: 'login' }"
                   class="dropdown-item"
                   @click="logout"
                 >
                   Log out
-                </router-link>
+                </router-link> -->
               </li>
             </ul>
           </li>
@@ -79,10 +86,10 @@
 <script setup>
 import securityStore from '@/stores/security';
 import securityService from '@/services/security';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 
 const store = securityStore();
-const router = useRouter();
+// const router = useRouter();
 
 // const activeClass = (pageName) => {
 //   if (pageName === window.currentPageName) {

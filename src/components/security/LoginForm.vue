@@ -2,7 +2,7 @@
   <form-component
     class="border bg-white rounded p-3"
     title="Gift"
-    :error="error"
+    :error-message="errorLogin"
     @submitted="handleSubmit"
   >
     <email-input
@@ -47,7 +47,7 @@ const emit = defineEmits(['user-authenticated']);
 
 let email = '';
 let password = '';
-const error = ref(null);
+const errorLogin = ref(null);
 const isLoading = ref(false);
 
 const onUpdatedEmail = (event) => {
@@ -61,23 +61,23 @@ const onUpdatedPassword = (event) => {
 const handleSubmit = () => {
   if (email && password) {
     isLoading.value = true;
-    error.value = null;
+    errorLogin.value = null;
 
     // const value = securityService.login({ username: email, password });
     securityService.login({ username: email, password })
       .then(
         () => {
-          emit('user-authenticated')
+          emit('user-authenticated');
         },
         (errorMessage) => {
-          error.value = errorMessage;
-        }
+          errorLogin.value = errorMessage;
+        },
       )
       .finally(() => {
         isLoading.value = false;
       });
   } else {
-    error.value = 'You must set username and password';
+    errorLogin.value = 'You must set username and password';
   }
 };
 </script>

@@ -1,5 +1,5 @@
-import SettingsPage from '@/pages/settings/index.vue';
-import SettingsProfilePage from '@/pages/settings/profile.vue';
+import SettingsPage from '@/pages/settings/settingsPage.vue';
+import SettingsProfilePage from '@/pages/settings/profilePage.vue';
 
 const settingsRoutes = {
   path: '/settings',

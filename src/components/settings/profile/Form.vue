@@ -1,6 +1,6 @@
 <template>
   <form-component
-    :error="error"
+    :error="errorForm"
     @submitted="handleSubmit"
   >
     <email-input
@@ -71,6 +71,7 @@ import SubmitButton from '@/components/element/button/Submit.vue';
 import TextInput from '@/components/element/form/input/Text.vue';
 
 let isLoading = false;
+let errorForm = null;
 const user = securityService.getUser();
 
 const onUpdatedPasswordInput = (event) => {
@@ -95,15 +96,14 @@ const handleSubmit = () => {
     .then(() => {
       user.password = null;
     }).catch((error) => {
-      if (error.response.data.error) {
-        error = error.response.data.error;
+      if (error.response && error.response.data.error) {
+        errorForm = error.response.data.error;
       } else {
-        error = 'Unknown error';
+        errorForm = 'Unknown error';
       }
     }).finally(() => {
       isLoading = false;
     });
-  ;
 };
 // export default {
 //   name: 'MyProfileForm',
