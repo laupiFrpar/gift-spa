@@ -10,7 +10,7 @@
   </tr>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineProps } from 'vue';
 
 defineProps({

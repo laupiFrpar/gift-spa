@@ -7,7 +7,9 @@ const projectRootDir = resolve(__dirname);
 // https://vitejs.dev/config/
 export default defineConfig({
   envPrefix: 'GIFT_',
-  plugins: [vue()],
+  plugins: [vue({
+    reactivityTransform: true,
+  })],
   resolve: {
     alias: [
       {

@@ -6,6 +6,6 @@
   />
 </template>
 
-<script setup>
+<script setup lang="ts">
 import InputComponent from './InputComponent.vue';
 </script>

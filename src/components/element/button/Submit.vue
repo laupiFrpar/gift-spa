@@ -19,7 +19,7 @@
   </button-component>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineProps } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 

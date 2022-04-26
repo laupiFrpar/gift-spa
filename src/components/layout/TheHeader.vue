@@ -76,7 +76,7 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import securityStore from '@/stores/security';
 import securityService from '@/services/security';
 import { useRouter } from 'vue-router';

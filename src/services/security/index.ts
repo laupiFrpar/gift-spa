@@ -3,10 +3,10 @@ import api from '../api';
 import tokenService from './token';
 
 const securityService = {
-  login: ({ username, password }) => {
+  login: ({ username, password }: { username: string, password: string}) => {
     const store = securityStore();
 
-    return api.post('/api/login_check', { username, password })
+    return api.post('/api/authentication', { username, password })
       .then(
         async (response) => {
           if (response.data.token) {

@@ -26,7 +26,7 @@
   </form-component>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineProps, defineEmits, ref } from 'vue';
 // import securityStore from '@/stores/security';
 import securityService from '@/services/security';
@@ -47,7 +47,7 @@ const emit = defineEmits(['user-authenticated']);
 
 let email = '';
 let password = '';
-const error = ref(null);
+let error = ref<string | null>(null);
 const isLoading = ref(false);
 
 const onUpdatedEmail = (event) => {
@@ -72,7 +72,7 @@ const handleSubmit = () => {
           emit('user-authenticated')
         },
         (errorMessage) => {
-          error.value = errorMessage;
+          error = errorMessage;
         }
       )
       .finally(() => {
