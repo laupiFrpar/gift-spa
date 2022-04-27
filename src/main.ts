@@ -6,7 +6,6 @@ import pinia from './stores';
 import router from './router';
 import App from './App.vue';
 
-// require('bootstrap/js/dist/dropdown');
 import 'bootstrap/js/dist/dropdown';
 
 createApp(App)

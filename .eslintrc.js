@@ -16,13 +16,9 @@ module.exports = {
     // https://github.com/cypress-io/eslint-plugin-cypress
     // "plugin:cypress/recommended",
   ],
-  // parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2021,
   },
-  // plugins: [
-  //   '@typescript-eslint',
-  // ],
   rules: {
     // '@typescript-eslint/interface-name-prefix': 'off',
     // '@typescript-eslint/explicit-function-return-type': 'off',
@@ -65,4 +61,12 @@ module.exports = {
       },
     },
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.vue'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
 };

@@ -1,15 +1,16 @@
 <template>
   <form-component
     :error="error"
+    title="My profile"
     @submitted="handleSubmit"
   >
     <email-input
       id="email-readonly"
-      :value="user.email"
+      :value="user?.email"
       :readonly="true"
     />
     <password-input
-      :value="user.password"
+      :value="user?.password"
       @updated-value="onUpdatedPasswordInput"
     />
     <!-- <div
@@ -40,18 +41,6 @@
         </select>
       </div>
     </div> -->
-    <text-input
-      id="firstname"
-      label="First name"
-      placeholder="Tony"
-      @updated-value="onUpdatedFirstNameInput"
-    />
-    <text-input
-      id="lastname"
-      label="Last name"
-      placeholder="Stark"
-      @updated-value="onUpdatedLastNameInput"
-    />
     <div class="text-center">
       <submit-button :is-loading="isLoading">
         Save
@@ -60,7 +49,8 @@
   </form-component>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { ref } from 'vue';
 import api from '@/services/api';
 import securityService from '@/services/security';
 
@@ -68,25 +58,23 @@ import FormComponent from '@/components/element/form/FormComponent.vue';
 import EmailInput from '@/components/element/form/input/Email.vue';
 import PasswordInput from '@/components/element/form/input/Password.vue';
 import SubmitButton from '@/components/element/button/Submit.vue';
-import TextInput from '@/components/element/form/input/Text.vue';
 
 let isLoading = false;
-const user = securityService.getUser();
+let error = ref<string | null>(null);
+const user: User|null = securityService.getUser();
 
-const onUpdatedPasswordInput = (event) => {
-  user.password = event.value;
-};
-
-const onUpdatedFirstNameInput = (event) => {
-  user.people.firstName = event.value;
-};
-
-const onUpdatedLastNameInput = (event) => {
-  user.people.lastName = event.value;
+const onUpdatedPasswordInput = (value: string) => {
+  if (user) {
+    user.password = value;
+  }
 };
 
 const handleSubmit = () => {
   isLoading = true;
+  if (!user) {
+    // Todo redirect to login page
+    return;
+  }
 
   api.put(user['@id'], {
     password: user.password,
@@ -103,7 +91,6 @@ const handleSubmit = () => {
     }).finally(() => {
       isLoading = false;
     });
-  ;
 };
 // export default {
 //   name: 'MyProfileForm',

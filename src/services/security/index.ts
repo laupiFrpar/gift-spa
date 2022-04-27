@@ -37,7 +37,7 @@ const securityService = {
     localStorage.removeItem('user');
     store.logout();
   },
-  getUser: () => {
+  getUser: (): User|null => {
     const store = securityStore();
 
     return store.getUser();

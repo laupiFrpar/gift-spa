@@ -9,7 +9,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import SettingsProfileForm from '@/components/settings/profile/Form.vue';
 // import { fetchPeoples } from '@/services/peoples.js';
 

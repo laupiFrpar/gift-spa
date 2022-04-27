@@ -45,7 +45,9 @@
                 <router-link
                   :to="{name: 'settingsProfile' }"
                   class="dropdown-item"
-                >My profile</router-link>
+                >
+                  My profile
+                </router-link>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
@@ -79,10 +81,10 @@
 <script setup lang="ts">
 import securityStore from '@/stores/security';
 import securityService from '@/services/security';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 
 const store = securityStore();
-const router = useRouter();
+// const router = useRouter();
 
 // const activeClass = (pageName) => {
 //   if (pageName === window.currentPageName) {

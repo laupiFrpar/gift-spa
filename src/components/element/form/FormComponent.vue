@@ -26,16 +26,6 @@ interface Props {
 }
 
 defineProps<Props>();
-// defineProps({
-//   error: {
-//     type: String,
-//     default: null,
-//   },
-//   title: {
-//     type: String,
-//     default: null,
-//   },
-// });
 
 const emit = defineEmits(['submitted']);
 
