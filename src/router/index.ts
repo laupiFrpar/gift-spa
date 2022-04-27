@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/pages/HomePage.vue';
 import SecurityLoginPage from '@/pages/security/SecurityLoginPage.vue';
 import securityStore from '@/stores/security';
+import settingsRoutes from './settings';
 import { APP } from '@/app.constant';
 
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
     meta: { requiresAuth: true },
     component: HomePage,
   },
+  settingsRoutes,
 ];
 
 const router = createRouter({
