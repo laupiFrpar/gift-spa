@@ -4,7 +4,6 @@
       <thead>
         <table-header :fields="fields" />
       </thead>
-      <!-- <tbody v-if="items.length"> -->
       <tbody>
         <table-row
           v-for="item in items"
@@ -12,8 +11,8 @@
           :key="item['@id']"
           :item="item"
           :fields="fields"
-          @edit-item="$emit('edit-item', id)"
-          @remove-item="$emit('remove-item', id)"
+          @edit-item="$emit('edit-item', item['@id'])"
+          @remove-item="$emit('remove-item', item['@id'])"
         />
         <tr
           v-show="loading || items.length === 0"
@@ -29,11 +28,8 @@
   </div>
 </template>
 
-<script setup>
-import {
-  defineProps, defineEmits,
-} from 'vue';
-// import Loading from '@/components/loading';
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
 import TableRow from './TableRow.vue';
 import TableHeader from './TableHeader.vue';
 
@@ -47,7 +43,7 @@ defineProps({
     required: true,
   },
   items: {
-    type: Array,
+    type: Object,
     required: true,
   },
   loading: {

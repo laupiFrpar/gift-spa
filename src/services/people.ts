@@ -1,6 +1,6 @@
-import api from api;
+import api from './api';
 
-export function fetchPeoples(page) {
+export function fetchPeoples(page: number) {
   if (!page) {
     page = 1;
   }
@@ -8,6 +8,6 @@ export function fetchPeoples(page) {
   return api.get(`/api/peoples?page=${page}&order[createdAt]=desc`);
 }
 
-export function fetchPeople(peopleId) {
+export function fetchPeople(peopleId: string) {
   return api.get(peopleId);
 }

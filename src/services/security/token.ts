@@ -1,5 +1,5 @@
 const tokenService = {
-  set: (token) => {
+  set: (token: string) => {
     localStorage.setItem('token', token);
   },
   get: () => localStorage.getItem('token'),

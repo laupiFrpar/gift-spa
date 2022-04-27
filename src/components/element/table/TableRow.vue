@@ -21,15 +21,15 @@
   </tr>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {
   defineProps, defineEmits,
 } from 'vue';
-import ButtonComponent from '@/components/element/button/index.vue';
+import ButtonComponent from '@/components/element/button/ButtonComponent.vue';
 
 defineProps({
   fields: {
-    type: Array,
+    type: Object,
     required: true,
   },
   fieldKey: {

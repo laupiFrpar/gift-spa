@@ -17,19 +17,15 @@
   </form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
 
-defineProps({
-  error: {
-    type: String,
-    default: null,
-  },
-  title: {
-    type: String,
-    default: null,
-  },
-});
+interface Props {
+  error: string | null;
+  title: string;
+}
+
+defineProps<Props>();
 
 const emit = defineEmits(['submitted']);
 

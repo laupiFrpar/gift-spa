@@ -36,7 +36,7 @@
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >{{ store.user.email }}</a>
+            >{{ store.user?.email }}</a>
             <ul
               class="dropdown-menu"
               aria-labelledby="navbar-user-dropdown"
@@ -45,7 +45,9 @@
                 <router-link
                   :to="{name: 'settingsProfile' }"
                   class="dropdown-item"
-                >My profile</router-link>
+                >
+                  My profile
+                </router-link>
               </li>
               <li><hr class="dropdown-divider"></li>
               <li>
@@ -76,13 +78,13 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import securityStore from '@/stores/security';
 import securityService from '@/services/security';
-import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
 
 const store = securityStore();
-const router = useRouter();
+// const router = useRouter();
 
 // const activeClass = (pageName) => {
 //   if (pageName === window.currentPageName) {

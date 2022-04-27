@@ -1,10 +1,11 @@
 // import authService from '@/services/security/auth';
 import { defineStore } from 'pinia';
 
-const user = JSON.parse(localStorage.getItem('user'));
-const initialState = user
+const userStorage = localStorage.getItem('user');
+const user: User = userStorage ? JSON.parse(userStorage) : null;
+const initialState: State = user
   ? { isLogged: true, user }
-  : { isLogged: false, user: null };
+  : { isLogged: false, user };
 
 const securityStore = defineStore('security', {
   state: () => initialState,
@@ -24,7 +25,7 @@ const securityStore = defineStore('security', {
     //       },
     //     );
     // },
-    loginSuccess(userData) {
+    loginSuccess(userData: User) {
       this.isLogged = true;
       this.user = userData;
     },
@@ -36,7 +37,7 @@ const securityStore = defineStore('security', {
       this.isLogged = false;
       this.user = null;
     },
-    getUser() {
+    getUser(): User|null {
       return this.user;
     },
   },

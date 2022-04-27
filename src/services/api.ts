@@ -1,8 +1,9 @@
 import axios from 'axios';
 import tokenService from './security/token';
+import { API } from '@/app.constant';
 
 const api = axios.create({
-  baseURL: import.meta.env.GIFT_API_URL,
+  baseURL: API.URL,
   headers: {
     'Content-Type': 'application/ld+json',
   },
@@ -13,14 +14,11 @@ api.interceptors.request.use(
     const newConfig = config;
     const token = tokenService.get();
 
-    if (token) {
+    if (token && newConfig.headers) {
       newConfig.headers.Authorization = `Bearer ${token}`;
     }
 
     return newConfig;
-  },
-  (error) => {
-    console.log(error);
   },
 );
 
