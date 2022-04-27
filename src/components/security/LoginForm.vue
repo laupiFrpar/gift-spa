@@ -75,16 +75,6 @@ const handleSubmit = () => {
       .finally(() => {
         isLoading.value = false;
       });
-    // security.login({ username: email, password })
-    //   .then(
-    //     () => {
-    //       emit('user-authenticated');
-    //     },
-    //     (errorMessage) => {
-    //       isLoading.value = false;
-    //       error.value = errorMessage;
-    //     },
-    //   );
   } else {
     error.value = 'You must set username and password';
   }
