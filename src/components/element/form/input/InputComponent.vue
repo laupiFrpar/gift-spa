@@ -76,7 +76,10 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['updated-value']);
+// const emit = defineEmits(['updated-value']);
+const emit = defineEmits<{
+  (e: 'updated-value', value: string): void
+}>();
 
 const modelValue = ref(props.value);
 
@@ -117,6 +120,7 @@ const inputClass = computed(() => {
 const computeName = computed(() => (props.name ? props.name : props.id));
 
 const onInput = () => {
-  emit('updated-value', { value: modelValue.value });
+  // emit('updated-value', { value: modelValue.value });
+  emit('updated-value', modelValue.value)
 };
 </script>

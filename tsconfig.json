@@ -36,9 +36,7 @@
     //   at least `ES2020` for dynamic `import()`s and `import.meta` to work correctly.
     // - If you are not using Vite, feel free to override the `target` field.
     "target": "ESNext",
-    "types": [
-      "vite/client",
-    ],
+    "types": ["vite/client"],
   },
   "exclude": [
     "node_modules",

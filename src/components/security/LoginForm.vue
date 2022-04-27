@@ -28,7 +28,6 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits, ref } from 'vue';
-// import securityStore from '@/stores/security';
 import securityService from '@/services/security';
 
 import FormComponent from '@/components/element/form/FormComponent.vue';
@@ -48,17 +47,15 @@ const emit = defineEmits(['user-authenticated']);
 let email = '';
 let password = '';
 let error = ref<string | null>(null);
-const isLoading = ref(false);
+const isLoading = ref<boolean>(false);
 
-const onUpdatedEmail = (event) => {
-  email = event.value;
+const onUpdatedEmail = (value: string) => {
+  email = value;
 };
 
-const onUpdatedPassword = (event) => {
-  password = event.value;
+const onUpdatedPassword = (value: string) => {
+  password = value;
 };
-
-// const security = securityStore();
 
 const handleSubmit = () => {
   if (email && password) {

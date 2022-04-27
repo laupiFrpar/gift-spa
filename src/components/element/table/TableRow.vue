@@ -29,7 +29,7 @@ import ButtonComponent from '@/components/element/button/ButtonComponent.vue';
 
 defineProps({
   fields: {
-    type: Array,
+    type: Object,
     required: true,
   },
   fieldKey: {
