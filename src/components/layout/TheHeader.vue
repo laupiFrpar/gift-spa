@@ -36,7 +36,7 @@
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-            >{{ store.user.email }}</a>
+            >{{ store.user?.email }}</a>
             <ul
               class="dropdown-menu"
               aria-labelledby="navbar-user-dropdown"
