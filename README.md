@@ -1,5 +1,7 @@
 # Gift SPA
 
+[![Analyse code style](https://github.com/laupiFrpar/gift-spa/actions/workflows/code-style.yml/badge.svg)](https://github.com/laupiFrpar/gift-spa/actions/workflows/code-style.yml)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
