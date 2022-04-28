@@ -12,6 +12,6 @@ import { defineProps } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 
 defineProps<{
-  href: string,
+  href: string | null,
 }>();
 </script>

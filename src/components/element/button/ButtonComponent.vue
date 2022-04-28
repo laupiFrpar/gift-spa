@@ -17,15 +17,15 @@ import { defineProps, computed } from 'vue';
 
 const props = withDefaults(
   defineProps<{
-    href: string | null,
-    type: string | null,
-    role: string | null,
-    variant: string,
+    href?: string | null,
+    role?: string | null,
+    type?: string | null,
+    variant?: string,
   }>(),
   {
     href: null,
-    type: null,
     role: null,
+    type: null,
     variant: 'primary',
   }
 )
