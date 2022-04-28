@@ -20,14 +20,20 @@
 <script setup lang="ts">
 import { defineProps, defineEmits } from 'vue';
 
-interface Props {
-  error: string | null;
-  title: string;
-}
+withDefaults(
+  defineProps<{
+    error?: string | null,
+    title?: string | null,
+  }>(),
+  {
+    error: null,
+    title: null,
+  }
+);
 
-defineProps<Props>();
-
-const emit = defineEmits(['submitted']);
+const emit = defineEmits<{
+  (e: 'submitted'): void,
+}>();
 
 const handleSubmit = () => {
   emit('submitted');

@@ -15,24 +15,20 @@
 <script setup lang="ts">
 import { defineProps, computed } from 'vue';
 
-const props = defineProps({
-  href: {
-    type: String,
-    default: null,
-  },
-  type: {
-    type: String,
-    default: null,
-  },
-  role: {
-    type: String,
-    default: null,
-  },
-  variant: {
-    type: String,
-    default: 'primary',
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    href: string | null,
+    type: string | null,
+    role: string | null,
+    variant: string,
+  }>(),
+  {
+    href: null,
+    type: null,
+    role: null,
+    variant: 'primary',
+  }
+)
 
 const componentClass = computed(() => {
   const classes = [`btn-${props.variant}`];

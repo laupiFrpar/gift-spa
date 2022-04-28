@@ -1,19 +1,19 @@
 <template>
   <tr>
     <td
-      v-for="(field, index) in fields"
+      v-for="(column, index) in columns"
       :key="index"
     >
-      {{ item[field.key] }}
+      {{ item[column.id] }}
     </td>
     <td>
-      <button-component @click="$emit('edit-item', item[fieldKey])">
+      <button-component @click="$emit('edit-item', item[columnId])">
         <i class="fas fa-edit" />
       </button-component>
       &nbsp;
       <button-component
         variant="danger"
-        @click="$emit('remove-item', item[fieldKey])"
+        @click="$emit('remove-item', item[columnId])"
       >
         <i class="fas fa-trash" />
       </button-component>
@@ -27,20 +27,19 @@ import {
 } from 'vue';
 import ButtonComponent from '@/components/element/button/ButtonComponent.vue';
 
-defineProps({
-  fields: {
-    type: Object,
-    required: true,
-  },
-  fieldKey: {
-    type: String,
-    default: '@id',
-  },
-  item: {
-    type: Object,
-    required: true,
-  },
-});
+withDefaults(
+  defineProps<{
+    columns: Columns,
+    columnId?: string,
+    item: Resource,
+  }>(),
+  {
+    columnId: '@id',
+  }
+);
 
-defineEmits(['edit-item', 'remove-item']);
+defineEmits<{
+  (e: 'edit-item', id: string): void,
+  (e: 'remove-item', id: string): void,
+}>();
 </script>

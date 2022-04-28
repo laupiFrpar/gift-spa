@@ -1,0 +1,68 @@
+{
+  "common": {
+    "error": {
+      "unknown": "Erreur inconnue"
+    },
+    "loading": "En cours de chargement...",
+    "form": {
+      "input": {
+        "email": {
+          "label": "Email"
+        },
+        "number": {
+          "label": "Nombre"
+        },
+        "password": {
+          "label": "Mot de passe"
+        },
+        "price": {
+          "label": "Prix"
+        },
+        "text": {
+          "label": "Texte"
+        }
+      }
+    },
+    "table": {
+      "empty-message": "Pas de données"
+    }
+  },
+  "header": {
+    "navbar": {
+      "gifts": "Cadeaux",
+      "peoples": "Membres",
+      "menu": {
+        "logout": "Se déconnecter",
+        "my-profile": "Mon compte"
+      }
+    }
+  },
+  "security": {
+    "form": {
+      "email": {
+        "placeholder": "Saisir votre courriel..."
+      },
+      "password": {
+        "placeholder": "Mot de passe"
+      },
+      "submit": {
+        "label": "Se connecter",
+        "loading": "Connexion en cours..."
+      }
+    },
+    "error": {
+      "missing": "Vous devez saisir votre courriel et mot de passe"
+    }
+  },
+  "settings": {
+    "profile": {
+      "form": {
+        "submit": {
+          "label": "Enregistrer",
+          "loading": "Enregistrement en cours..."
+        }
+      },
+      "title": "Mon compte"
+    }
+  }
+}

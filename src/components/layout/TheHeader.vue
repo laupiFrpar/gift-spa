@@ -14,13 +14,13 @@
             <a
               :class="[activeClass('people'), 'nav-link']"
               href="/peoples"
-            >Peoples</a>
+            >{{ t('header.navbar.peoples') }}</a>
           </li>
           <li class="nav-item">
             <a
               :class="[activeClass('gift'), 'nav-link']"
               href="/gifts"
-            >Gifts</a>
+            >{{ t('header.navbar.gifts') }}</a>
           </li>
         </ul> -->
         <ul class="navbar-nav ml-auto">
@@ -46,7 +46,7 @@
                   :to="{name: 'settingsProfile' }"
                   class="dropdown-item"
                 >
-                  My profile
+                  {{ t('header.navbar.menu.my-profile') }}
                 </router-link>
               </li>
               <li><hr class="dropdown-divider"></li>
@@ -56,7 +56,7 @@
                   class="dropdown-item"
                   @click="logout"
                 >
-                  Log out
+                  {{ t('header.navbar.menu.logout') }}
                 </router-link>
               </li>
             </ul>
@@ -79,10 +79,13 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
 import securityStore from '@/stores/security';
 import securityService from '@/services/security';
 // import { useRouter } from 'vue-router';
 
+const { t } = useI18n();
 const store = securityStore();
 // const router = useRouter();
 

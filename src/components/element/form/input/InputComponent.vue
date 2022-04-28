@@ -33,55 +33,36 @@ import {
   computed, defineProps, defineEmits, ref,
 } from 'vue';
 
-const props = defineProps({
-  group: {
-    type: Boolean,
-    default: false,
-  },
-  groupText: {
-    type: String,
-    default: null,
-  },
-  id: {
-    type: String,
-    required: true,
-  },
-  inline: {
-    type: Boolean,
-    default: true,
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  name: {
-    type: String,
-    default: null,
-  },
-  placeholder: {
-    type: String,
-    default: null,
-  },
-  readonly: {
-    type: Boolean,
-    default: false,
-  },
-  type: {
-    type: String,
-    default: 'text',
-  },
-  value: {
-    type: String,
-    default: null,
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    group?: boolean,
+    groupText?: string|null,
+    id: string,
+    inline?: boolean,
+    label: string,
+    name?: string|null,
+    placeholder?: string,
+    readonly?: boolean,
+    type?: string,
+    value?: string|null,
+  }>(),
+  {
+    group: false,
+    groupText: null,
+    inline: true,
+    name: null,
+    placeholder: '',
+    readonly: false,
+    type: 'text',
+    value: null,
+  }
+);
 
-// const emit = defineEmits(['updated-value']);
 const emit = defineEmits<{
-  (e: 'updated-value', value: string): void
+  (e: 'updated-value', value: string|null): void
 }>();
 
-const modelValue = ref(props.value);
+const modelValue = ref<string|null>(props.value);
 
 const componentClass = computed(() => {
   const classes = ['mb-3'];
@@ -120,7 +101,6 @@ const inputClass = computed(() => {
 const computeName = computed(() => (props.name ? props.name : props.id));
 
 const onInput = () => {
-  // emit('updated-value', { value: modelValue.value });
   emit('updated-value', modelValue.value)
 };
 </script>

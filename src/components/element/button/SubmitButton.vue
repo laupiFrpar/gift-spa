@@ -12,7 +12,7 @@
     <span
       v-show="isLoading"
       class="visually-hidden"
-    >&nbsp;{{ labelLoading }}</span>
+    >&nbsp;{{ labelLoadingWithDefaults }}</span>
     <span v-show="!isLoading">
       <slot />
     </span>
@@ -26,14 +26,16 @@ import ButtonComponent from './ButtonComponent.vue';
 
 const { t } = useI18n({});
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
-    isLoading: boolean,
-    labelLoading: string,
+    isLoading?: boolean,
+    labelLoading?: string | null,
   }>(),
   {
     isLoading: false,
-    labelLoading: t('common.loading'),
+    labelLoading: null,
   }
 );
+
+const labelLoadingWithDefaults = props.labelLoading || t('common.loading');
 </script>

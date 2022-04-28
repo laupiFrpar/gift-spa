@@ -1,0 +1,68 @@
+{
+  "common": {
+    "error": {
+      "unknown": "Unknown error"
+    },
+    "loading": "Loading...",
+    "form": {
+      "input": {
+        "email": {
+          "label": "Email"
+        },
+        "number": {
+          "label": "Number"
+        },
+        "password": {
+          "label": "Password"
+        },
+        "price": {
+          "label": "Price"
+        },
+        "text": {
+          "label": "Text"
+        }
+      }
+    },
+    "table": {
+      "empty-message": "No items"
+    }
+  },
+  "header": {
+    "navbar": {
+      "gifts": "Gifts",
+      "peoples": "Peoples",
+      "menu": {
+        "logout": "Log out",
+        "my-profile": "My Profile"
+      }
+    }
+  },
+  "security": {
+    "form": {
+      "email": {
+        "placeholder": "Enter an email..."
+      },
+      "password": {
+        "placeholder": "Password"
+      },
+      "submit": {
+        "label": "Log in"
+      },
+      "logging": "Logging..."
+    },
+    "error": {
+      "missing": "You must set username and password"
+    }
+  },
+  "settings": {
+    "profile": {
+      "form": {
+        "submit": {
+          "label": "Save",
+          "loading": "Saving..."
+        }
+      },
+      "title": "My profile"
+    }
+  }
+}

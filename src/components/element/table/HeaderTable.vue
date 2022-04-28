@@ -1,10 +1,10 @@
 <template>
   <tr>
     <th
-      v-for="(field, index) in fields"
+      v-for="(column, index) in columns"
       :key="index"
     >
-      {{ field.label }}
+      {{ column.label }}
     </th>
     <th>&nbsp;</th>
   </tr>
@@ -13,10 +13,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
 
-defineProps({
-  fields: {
-    type: Object,
-    required: true,
-  },
-});
+defineProps<{
+  columns: Columns,
+}>();
 </script>

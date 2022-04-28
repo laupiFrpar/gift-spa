@@ -6,21 +6,21 @@
     @submitted="handleSubmit"
   >
     <email-input
-      placeholder="Enter email"
+      :placeholder="t('security.form.email.placeholder')"
       :inline="false"
       @updated-value="onUpdatedEmail"
     />
     <password-input
-      placeholder="Password"
+      :placeholder="t('security.form.password.placeholder')"
       :inline="false"
       @updated-value="onUpdatedPassword"
     />
     <div class="text-center">
       <submit-button
         :is-loading="isLoading"
-        label-loading="Logging..."
+        :label-loading="t('security.form.submit.loading')"
       >
-        Log In
+        {{ t('security.form.submit.label') }}
       </submit-button>
     </div>
   </form-component>
@@ -28,6 +28,8 @@
 
 <script setup lang="ts">
 import { defineProps, defineEmits, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 import securityService from '@/services/security';
 
 import FormComponent from '@/components/element/form/FormComponent.vue';
@@ -35,14 +37,20 @@ import EmailInput from '@/components/element/form/input/EmailInput.vue';
 import PasswordInput from '@/components/element/form/input/PasswordInput.vue';
 import SubmitButton from '@/components/element/button/SubmitButton.vue';
 
-defineProps({
-  user: {
-    type: String,
-    default: null,
-  },
-});
+const { t } = useI18n();
 
-const emit = defineEmits(['user-authenticated']);
+withDefaults(
+  defineProps<{
+    user: string | null,
+  }>(),
+  {
+    user: null,
+  }
+);
+
+const emit = defineEmits<{
+  (e: 'user-authenticated'): void,
+}>();
 
 let email = '';
 let password = '';
@@ -62,7 +70,6 @@ const handleSubmit = () => {
     isLoading.value = true;
     error.value = null;
 
-    // const value = securityService.login({ username: email, password });
     securityService.login({ username: email, password })
       .then(
         () => {
@@ -76,7 +83,7 @@ const handleSubmit = () => {
         isLoading.value = false;
       });
   } else {
-    error.value = 'You must set username and password';
+    error.value = t('security.error.missing');
   }
 };
 </script>
