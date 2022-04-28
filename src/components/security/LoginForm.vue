@@ -31,9 +31,9 @@ import { defineProps, defineEmits, ref } from 'vue';
 import securityService from '@/services/security';
 
 import FormComponent from '@/components/element/form/FormComponent.vue';
-import EmailInput from '@/components/element/form/input/Email.vue';
-import PasswordInput from '@/components/element/form/input/Password.vue';
-import SubmitButton from '@/components/element/button/Submit.vue';
+import EmailInput from '@/components/element/form/input/EmailInput.vue';
+import PasswordInput from '@/components/element/form/input/PasswordInput.vue';
+import SubmitButton from '@/components/element/button/SubmitButton.vue';
 
 defineProps({
   user: {

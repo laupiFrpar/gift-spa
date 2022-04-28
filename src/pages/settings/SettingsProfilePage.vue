@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import SettingsProfileForm from '@/components/settings/profile/Form.vue';
+import SettingsProfileForm from '@/components/settings/profile/ProfileForm.vue';
 // import { fetchPeoples } from '@/services/peoples.js';
 
 // const peoples = [];

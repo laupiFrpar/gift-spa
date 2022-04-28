@@ -11,10 +11,7 @@
 import { defineProps } from 'vue';
 import ButtonComponent from './ButtonComponent.vue';
 
-defineProps({
-  href: {
-    type: String,
-    required: true,
-  },
-});
+defineProps<{
+  href: string,
+}>();
 </script>

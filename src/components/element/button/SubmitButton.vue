@@ -21,16 +21,19 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import { useI18n } from 'vue-i18n';
 import ButtonComponent from './ButtonComponent.vue';
 
-defineProps({
-  isLoading: {
-    type: Boolean,
-    default: false,
-  },
-  labelLoading: {
-    type: String,
-    default: 'Loading...',
-  },
-});
+const { t } = useI18n({});
+
+withDefaults(
+  defineProps<{
+    isLoading: boolean,
+    labelLoading: string,
+  }>(),
+  {
+    isLoading: false,
+    labelLoading: t('common.loading'),
+  }
+);
 </script>
