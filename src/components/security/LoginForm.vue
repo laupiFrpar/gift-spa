@@ -2,7 +2,7 @@
   <form-component
     class="border bg-white rounded p-3"
     title="Gift"
-    :error-message="errorMessage"
+    :error-message="errorLoginMessage"
     @submitted="handleSubmit"
   >
     <email-input
@@ -54,7 +54,7 @@ const emit = defineEmits<{
 
 let email = '';
 let password = '';
-let errorMessage = ref<string | null>(null);
+let errorLoginMessage = ref<string | null>(null);
 const isLoading = ref<boolean>(false);
 
 const onUpdatedEmail = (value: string) => {
@@ -68,25 +68,23 @@ const onUpdatedPassword = (value: string) => {
 const handleSubmit = () => {
   if (email && password) {
     isLoading.value = true;
-    errorMessage.value = null;
+    errorLoginMessage.value = null;
 
     securityService
       .login({ username: email, password })
       .then(
         () => {
-          console.log('succeed');
           emit('user-authenticated')
         },
       )
       .catch((errorMessage: string) => {
-        console.log('errorMessage: ', errorMessage);
-        errorMessage.value = errorMessage;
+        errorLoginMessage.value = errorMessage;
       })
       .finally(() => {
         isLoading.value = false;
       });
   } else {
-    errorMessage.value = t('security.error.missing');
+    errorLoginMessage.value = t('security.error.missing');
   }
 };
 </script>
