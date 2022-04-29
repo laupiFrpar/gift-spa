@@ -1,7 +1,6 @@
+import api from '@/services/api';
+import tokenService from '@/services/security/token';
 import securityStore from '@/stores/security';
-
-import api from '../api';
-import tokenService from './token';
 
 const securityService = {
   login: ({ username, password }: { username: string, password: string}) => {
@@ -13,7 +12,7 @@ const securityService = {
         .then(
           async (response) => {
             if (response.data.token) {
-              tokenService.set(response.data.token);
+              tokenService.set(response.data);
             }
 
             return api
@@ -27,8 +26,6 @@ const securityService = {
           }
         )
         .catch((errorResponse) => {
-          console.log('security service failed');
-          console.log('errorResponse', errorResponse);
           store.loginFailure();
 
           let errorMessage = 'Unknown error';
@@ -54,7 +51,7 @@ const securityService = {
     const store = securityStore();
 
     return store.getUser();
-  }
+  },
 };
 
 export default securityService;
