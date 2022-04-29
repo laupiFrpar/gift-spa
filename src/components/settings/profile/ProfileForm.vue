@@ -1,6 +1,6 @@
 <template>
   <form-component
-    :error="error"
+    :error-message="errorMessage"
     @submitted="handleSubmit"
   >
     <email-input
@@ -38,7 +38,7 @@ import SubmitButton from '@/components/element/button/SubmitButton.vue';
 const { t } = useI18n();
 
 let isLoading = false;
-let error = ref<string | null>(null);
+let errorMessage = ref<string | null>(null);
 const user: User|null = securityService.getUser();
 
 const onUpdatedPasswordInput = (value: string) => {
@@ -59,11 +59,11 @@ const handleSubmit = () => {
   })
     .then(() => {
       user.password = null;
-    }).catch((error) => {
-      if (error.response.data.error) {
-        error = error.response.data.error;
+    }).catch((errorResponse: ErrorResponse) => {
+      if (errorResponse.response?.data.message) {
+        errorMessage.value = errorResponse.response.data.message;
       } else {
-        error = t('common.error.unknown');
+        errorMessage.value = t('common.error.unknown');
       }
     }).finally(() => {
       isLoading = false;

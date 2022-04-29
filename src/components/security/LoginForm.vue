@@ -2,7 +2,7 @@
   <form-component
     class="border bg-white rounded p-3"
     title="Gift"
-    :error="error"
+    :error-message="errorMessage"
     @submitted="handleSubmit"
   >
     <email-input
@@ -41,7 +41,7 @@ const { t } = useI18n();
 
 withDefaults(
   defineProps<{
-    user: string | null,
+    user?: string | null,
   }>(),
   {
     user: null,
@@ -54,7 +54,7 @@ const emit = defineEmits<{
 
 let email = '';
 let password = '';
-let error = ref<string | null>(null);
+let errorMessage = ref<string | null>(null);
 const isLoading = ref<boolean>(false);
 
 const onUpdatedEmail = (value: string) => {
@@ -68,22 +68,25 @@ const onUpdatedPassword = (value: string) => {
 const handleSubmit = () => {
   if (email && password) {
     isLoading.value = true;
-    error.value = null;
+    errorMessage.value = null;
 
-    securityService.login({ username: email, password })
+    securityService
+      .login({ username: email, password })
       .then(
         () => {
+          console.log('succeed');
           emit('user-authenticated')
         },
-        (errorMessage) => {
-          error = errorMessage;
-        }
       )
+      .catch((errorMessage: string) => {
+        console.log('errorMessage: ', errorMessage);
+        errorMessage.value = errorMessage;
+      })
       .finally(() => {
         isLoading.value = false;
       });
   } else {
-    error.value = t('security.error.missing');
+    errorMessage.value = t('security.error.missing');
   }
 };
 </script>

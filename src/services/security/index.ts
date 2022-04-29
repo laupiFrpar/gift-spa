@@ -1,4 +1,5 @@
 import securityStore from '@/stores/security';
+
 import api from '../api';
 import tokenService from './token';
 
@@ -6,29 +7,41 @@ const securityService = {
   login: ({ username, password }: { username: string, password: string}) => {
     const store = securityStore();
 
-    return api.post('/api/authentication', { username, password })
-      .then(
-        async (response) => {
-          if (response.data.token) {
-            tokenService.set(response.data.token);
-          }
+    return new Promise((resolve, reject) => {
+      return api
+        .post('/api/authentication', { username, password })
+        .then(
+          async (response) => {
+            if (response.data.token) {
+              tokenService.set(response.data.token);
+            }
 
-          return api.get(response.data.user['@id'])
-            .then(
-              (userResponse) => {
+            return api
+              .get(response.data.user['@id'])
+              .then((userResponse) => {
                 localStorage.setItem('user', JSON.stringify(userResponse.data));
                 store.loginSuccess(userResponse.data);
 
-                return userResponse.data;
-              },
-            );
-        },
-        (error) => {
+                resolve(userResponse.data);
+              })
+          }
+        )
+        .catch((errorResponse) => {
+          console.log('security service failed');
+          console.log('errorResponse', errorResponse);
           store.loginFailure();
 
-          return error.response.data.message;
-        },
-      );
+          let errorMessage = 'Unknown error';
+
+          if (errorResponse.response) {
+            errorMessage = errorResponse.response.data.message;
+          } else {
+            errorMessage = errorResponse;
+          }
+
+          reject(errorMessage);
+        })
+    });
   },
   logout: () => {
     const store = securityStore();

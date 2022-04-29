@@ -7,11 +7,11 @@
       {{ title }}
     </h2>
     <div
-      v-if="error"
+      v-if="errorMessage"
       class="alert alert-danger"
       role="alert"
     >
-      {{ error }}
+      {{ errorMessage }}
     </div>
     <slot />
   </form>
@@ -22,11 +22,11 @@ import { defineProps, defineEmits } from 'vue';
 
 withDefaults(
   defineProps<{
-    error?: string | null,
+    errorMessage?: string | null,
     title?: string | null,
   }>(),
   {
-    error: null,
+    errorMessage: null,
     title: null,
   }
 );
