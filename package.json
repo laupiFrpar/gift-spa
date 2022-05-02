@@ -8,7 +8,10 @@
     "lint:js": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
     "lint:js:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "lint:ts": "vue-tsc --noEmit",
-    "test:open": "cypress open"
+    "test:local:ui": "cypress open --config baseUrl=http://localhost:3003",
+    "test:local": "cypress run --config baseUrl=http://localhost:3003,screenshotOnRunFailure=true,video=true",
+    "test:ui": "cypress open",
+    "test": "cypress run"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^2.2.2",
