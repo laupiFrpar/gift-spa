@@ -22,6 +22,7 @@
         :class="inputClass"
         :placeholder="placeholder"
         :readonly="readonly"
+        :data-test="id"
         @input="onInput"
       >
     </div>
