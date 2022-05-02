@@ -6,7 +6,10 @@
     "importsNotUsedAsValues": "error", // Enforce using `import type` instead of `import` for types
     "isolatedModules": true, // Required in Vite
     "jsx": "preserve", // Required in Vue projects
-    "lib": ["es2021"],
+    "lib": [
+      "es2021",
+      "dom",
+    ],
     "module": "ESNext",
     "moduleResolution": "node",
 
@@ -36,7 +39,10 @@
     //   at least `ES2020` for dynamic `import()`s and `import.meta` to work correctly.
     // - If you are not using Vite, feel free to override the `target` field.
     "target": "ESNext",
-    "types": ["vite/client"],
+    "types": [
+      "vite/client",
+      "cypress",
+    ],
   },
   "exclude": [
     "node_modules",

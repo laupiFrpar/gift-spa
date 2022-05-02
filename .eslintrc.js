@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
+    'cypress/globals': true,
     es2021: true,
     node: true,
     'vue/setup-compiler-macros': true,
@@ -10,15 +11,15 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'eslint:recommended',
     '@vue/typescript/recommended',
-    // 'airbnb-base',
-    // '@vue/eslint-config-typescript/recommended',
-    // '@vue/airbnb',
     // https://github.com/cypress-io/eslint-plugin-cypress
-    // "plugin:cypress/recommended",
+    "plugin:cypress/recommended",
   ],
   parserOptions: {
     ecmaVersion: 2021,
   },
+  plugins: [
+    "cypress",
+  ],
   rules: {
     // '@typescript-eslint/interface-name-prefix': 'off',
     // '@typescript-eslint/explicit-function-return-type': 'off',
@@ -26,6 +27,12 @@ module.exports = {
     // '@typescript-eslint/no-explicit-any': 'off',
     // '@typescript-eslint/no-non-null-assertion': 'off',
     // '@typescript-eslint/no-unused-vars': ['off', { argsIgnorePattern: '^_' }],
+    // "cypress/no-assigning-return-values": "error",
+    // "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-force": "warn",
+    // "cypress/no-async-tests": "error",
+    "cypress/no-pause": "error",
     // "import/extensions": 0,
     // "import/no-extraneous-dependencies": [
     //   "error", {

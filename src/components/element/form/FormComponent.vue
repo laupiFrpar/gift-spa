@@ -10,6 +10,7 @@
       v-if="errorMessage"
       class="alert alert-danger"
       role="alert"
+      data-test="error-message"
     >
       {{ errorMessage }}
     </div>
