@@ -1,6 +1,6 @@
 describe('Authenticate', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:8080/login');
+    cy.visit('/login');
   });
 
   it('authenticate successfully', () => {

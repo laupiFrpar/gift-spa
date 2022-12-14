@@ -19,8 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-
 withDefaults(
   defineProps<{
     errorMessage?: string | null,

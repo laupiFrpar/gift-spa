@@ -19,7 +19,7 @@
           class="text-center"
         >
           <td colspan="3">
-            <loading v-show="loading" />
+            <!-- <loading v-show="loading" /> -->
             <span v-show="!loading && items.length === 0">{{ emptyMessageDefault }}</span>
           </td>
         </tr>
@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import TableRow from './RowTable.vue';

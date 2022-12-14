@@ -30,9 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  computed, defineProps, defineEmits, ref,
-} from 'vue';
+import { computed, ref } from 'vue';
 
 const props = withDefaults(
   defineProps<{
@@ -65,7 +63,7 @@ const emit = defineEmits<{
 
 const modelValue = ref<string|null>(props.value);
 
-const componentClass = computed(() => {
+const componentClass = computed<string[]>(() => {
   const classes = ['mb-3'];
 
   // if (this.group) {

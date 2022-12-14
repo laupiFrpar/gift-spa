@@ -1,16 +1,20 @@
+// @import "~bootstrap/scss/mixins/banner";
+// @include bsBanner("");
+
 // scss-docs-start import-stack
 // Configuration
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/maps";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
 
-// Layout~bootstrap/scss/ & components
+// Layout & components
 @import "~bootstrap/scss/root";
-@import "~bootstrap/scss/images"; // Disabled
-@import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/reboot";
 // @import "~bootstrap/scss/type"; // Disabled
+// @import "~bootstrap/scss/images"; // Disabled
+@import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
@@ -21,6 +25,7 @@
 @import "~bootstrap/scss/nav";
 @import "~bootstrap/scss/navbar";
 // @import "~bootstrap/scss/card"; // Disabled
+// @import "~bootstrap/scss/accordion"; // Disabled
 // @import "~bootstrap/scss/breadcrumb"; // Disabled
 @import "~bootstrap/scss/pagination";
 // @import "~bootstrap/scss/badge"; // Disabled
@@ -34,14 +39,19 @@
 // @import "~bootstrap/scss/popover"; // Disabled
 // @import "~bootstrap/scss/carousel"; // Disabled
 @import "~bootstrap/scss/spinners";
+// @import "~bootstrap/scss/offcanvas"; // Disabled
+// @import "~bootstrap/scss/placeholders"; // Disabled
 
-// Helpers~bootstrap/scss/
+// Helpers
 // @import "~bootstrap/scss/helpers"; // Disabled
 
-// Utilities~bootstrap/scss/
+// Utilities
 @import "~bootstrap/scss/utilities/api";
+// scss-docs-end import-stack
 
-// // Import Font Awesome
-// @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-// @import '~@fortawesome/fontawesome-free/scss/solid';
-// @import '~@fortawesome/fontawesome-free/scss/brands';
+// Import Font Awesome
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts'; // Define path to webfonts
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
